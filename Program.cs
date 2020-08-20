@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using CsvHelper;
+using System.Globalization;
 
 namespace NumberTracker
 {
@@ -17,7 +20,7 @@ namespace NumberTracker
             var isRunning = true;
 
             // While we are running
-            while (isRunning) ;
+            while (isRunning)
             {
                 // Show the list of numbers
                 Console.WriteLine("------------------");
@@ -44,6 +47,18 @@ namespace NumberTracker
                     numbers.Add(number);
                 }
             }
+
+            // Create a stream for writing information into a file
+            var fileWriter = new StreamWriter("numbers.csv");
+
+            // Create an object that can write CSV to the filewriter
+            var csvWriter = new CsvWriter(fileWriter, CultureInfo.InvariantCulture);
+
+            // Ask our csvWriter to write out our list of numbers
+            csvWriter.WriteRecords(numbers);
+
+            // Tell the file we are done
+            fileWriter.Close();
         }
     }
 }
