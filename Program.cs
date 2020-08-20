@@ -13,6 +13,21 @@ namespace NumberTracker
         {
             Console.WriteLine("Welcome to Number Tracker");
 
+            TextReader reader;
+
+            if (File.Exists("numbers.csv")) ;
+            {
+                // if the file exists
+                // Assign a streamreader to read from the file
+                reader = new StreamReader("numbers.csv");
+            }
+            else
+            {
+                // The file does not exist
+                // Read the data from the empty string instead
+                reader = new StringReader("");
+            }
+
             // Creates a list of numbers we will be tracking
             // Creates a stream reader to get information from our file
             var fileReader = new StreamReader("numbers.csv");
