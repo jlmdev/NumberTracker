@@ -15,7 +15,7 @@ namespace NumberTracker
 
             TextReader reader;
 
-            if (File.Exists("numbers.csv")) ;
+            if (File.Exists("numbers.csv"))
             {
                 // if the file exists
                 // Assign a streamreader to read from the file
